@@ -8,12 +8,13 @@ from FlaskApp import app
 def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
+
     name = req.params.get('engineer')
     sr_num = req.params.get('sr')
     sev = req.params.get('sev')
     sap = req.params.get('sap')
     date_a = req.params.get('assigned')
-    notes = req.paramgs.get('notes')
+    #notes = req.paramgs.get('notes')
 
 
     if not name:
