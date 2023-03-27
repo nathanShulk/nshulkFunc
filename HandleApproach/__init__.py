@@ -14,7 +14,7 @@ def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
     sev = req.params.get('sev')
     sap = req.params.get('sap')
     date_a = req.params.get('assigned')
-    #notes = req.paramgs.get('notes')
+    notes = req.paramgs.get('notes')
 
 
     if not name:
@@ -52,6 +52,13 @@ def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
             pass
         else:
             date_a = req_body.get('assigned')
+    if not notes:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            sap = req_body.get('notes')
 
     if name:
         #msg.set(name)
