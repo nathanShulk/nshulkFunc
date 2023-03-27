@@ -14,7 +14,7 @@ def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
     sev = req.params.get('sev')
     sap = req.params.get('sap')
     date_a = req.params.get('assigned')
-    notes = req.paramgs.get('notes')
+    notes = req.params.get('notes')
 
 
     if not name:
