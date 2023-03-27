@@ -14,6 +14,7 @@ def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
     sev = req.params.get('sev')
     sap = req.params.get('sap')
     date_a = req.params.get('assigned')
+    caseType = req.params.get('caseType')
     notes = req.params.get('notes')
 
 
@@ -52,6 +53,13 @@ def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
             pass
         else:
             date_a = req_body.get('assigned')
+    if not caseType:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            caseType = req_body.get('caseType')
     if not notes:
         try:
             req_body = req.get_json()
@@ -66,7 +74,9 @@ def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
             if sev:
                 if sap:
                     if date_a:
-                       return func.HttpResponse(f"Hello {name}, case with SR # {sr_num} and severity {sev} has been assigned to you on {date_a}. The sap for the case is {sap}")    
+                        if caseType:
+                            return func.HttpResponse(f"Engineer Assigned: {name}\nSR #: {sr_num}\nSeverity: {sev}\nCase Type: {caseType}\nDate Assigned: {date_a}\nSAP: {sap}\n")    
+                        return func.HttpResponse(f"Engineer Assigned: {name}\nSR #: {sr_num}\nSeverity: {sev}\nCase Type: Missing\nDate Assigned: {date_a}\nSAP: {sap}\n")    
                     return func.HttpResponse(f"Hello {name}, you called this function! but there is no date")
                 return func.HttpResponse(f"Hello {name}, you called this function! but thre is no sap")
             return func.HttpResponse(f"Hello {name}, you called this function! but there is no sev")
