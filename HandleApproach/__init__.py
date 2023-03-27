@@ -58,7 +58,7 @@ def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
         except ValueError:
             pass
         else:
-            sap = req_body.get('notes')
+            notes = req_body.get('notes')
 
     if name:
         #msg.set(name)
