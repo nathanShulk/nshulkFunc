@@ -24,14 +24,14 @@ def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
         except ValueError:
             pass
         else:
-            name = req_body.get('name')
+            name = req_body.get('engineer')
     if not sr_num:
         try:
             req_body = req.get_json()
         except ValueError:
             pass
         else:
-            sr_num = req_body.get('sr_num')
+            sr_num = req_body.get('sr')
     if not sev:
         try:
             req_body = req.get_json()
