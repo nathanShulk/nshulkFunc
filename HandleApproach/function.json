@@ -16,14 +16,6 @@
       "type": "http",
       "direction": "out",
       "name": "$return"
-    },
-    {
-      "name": "outputblob",
-      "type": "blob",
-      "dataType": "binary",
-      "path": "tekaptsdevossfileshare/devoss/ExcelSheets",
-      "connection": "write2Stor",
-      "direction": "out"
     }
   ]
 }
